@@ -9,8 +9,9 @@ from Handlecsv import Handlecsv
 ds = pd.read_csv('./netflix1.csv', nrows=10000)
 df = ds.groupby(['type'])['type'].count()
 
+print('teste')
 # xml part
-movies = ET.Element('movies')
+""" movies = ET.Element('movies')
 
 for campo in df.keys():
   tipo = ET.Element('type' , attrib= {'type' : f'{campo}'})
@@ -52,12 +53,8 @@ for campo in df.keys():
 ET.indent(tree=movies, space='\t' ,level=0)
 
 xml_file = ET.ElementTree(movies)
-xml_file.write('teste.xml', encoding='utf-8', xml_declaration=True)
+xml_file.write('teste.xml', encoding='utf-8', xml_declaration=True) """
 
 
 handle = Handlecsv()
 filmes = handle.get_movies()
-
-for filme in filmes:
-  pass
-  #print(json.dumps(filme, indent=2))
