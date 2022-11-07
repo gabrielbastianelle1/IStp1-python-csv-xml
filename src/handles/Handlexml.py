@@ -1,7 +1,7 @@
 import pandas as pd
 import xml.etree.ElementTree as ET
 
-from Handlecsv import Handlecsv
+from .Handlecsv import Handlecsv
 
 
 class Handlexml:
@@ -86,6 +86,3 @@ class Handlexml:
 
         xml_file = ET.ElementTree(self.movies)
         xml_file.write("movies.xml", encoding="utf-8", xml_declaration=True)
-
-
-teste = Handlexml()

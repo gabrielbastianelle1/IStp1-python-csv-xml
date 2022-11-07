@@ -2,7 +2,7 @@ import csv
 import random
 import json
 
-from Handlerequest import Handlerequest
+from .Handlerequest import Handlerequest
 
 
 class Handlecsv:

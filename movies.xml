@@ -265,7 +265,7 @@
 					<listed_in>Dramas, Independent Movies, International Movies</listed_in>
 					<title>Sankofa</title>
 					<rating>TV-MA</rating>
-					<score>5.7</score>
+					<score>7.6</score>
 					<duration>125 min</duration>
 				</movie>
 			</country>
@@ -1135,7 +1135,7 @@
 					<listed_in>Children and Family Movies, Comedies, Music and Musicals</listed_in>
 					<title>Motu Patlu in the Game of Zones</title>
 					<rating>TV-Y7</rating>
-					<score>7.4</score>
+					<score>8.5</score>
 					<duration>87 min</duration>
 				</movie>
 			</country>
@@ -1258,7 +1258,7 @@
 					<listed_in>Documentaries</listed_in>
 					<title>Dick Johnson Is Dead</title>
 					<rating>PG-13</rating>
-					<score>5.5</score>
+					<score>6.2</score>
 					<duration>90 min</duration>
 				</movie>
 			</country>
@@ -1310,11 +1310,11 @@
 			<country country="Belgium" />
 			<country country="Brazil">
 				<movie id="s14">
-					<city lat="40.7127281" lon="-74.0060152">new-york</city>
+					<city lat="38.7077507" lon="-9.1365919">lisbon</city>
 					<listed_in>Children and Family Movies, Comedies</listed_in>
 					<title>Confessions of an Invisible Girl</title>
 					<rating>TV-PG</rating>
-					<score>4.8</score>
+					<score>5.2</score>
 					<duration>91 min</duration>
 				</movie>
 			</country>
@@ -1325,11 +1325,11 @@
 			<country country="France" />
 			<country country="Germany">
 				<movie id="s13">
-					<city lat="38.7077507" lon="-9.1365919">lisbon</city>
+					<city lat="40.7127281" lon="-74.0060152">new-york</city>
 					<listed_in>Dramas, International Movies</listed_in>
 					<title>Je Suis Karl</title>
 					<rating>TV-MA</rating>
-					<score>3.7</score>
+					<score>6.5</score>
 					<duration>127 min</duration>
 				</movie>
 			</country>
@@ -1362,7 +1362,7 @@
 					<listed_in>Comedies, Dramas</listed_in>
 					<title>The Starling</title>
 					<rating>PG-13</rating>
-					<score>5.7</score>
+					<score>5.8</score>
 					<duration>104 min</duration>
 				</movie>
 			</country>
@@ -2561,11 +2561,11 @@
 			<country country="Egypt" />
 			<country country="France">
 				<movie id="s3">
-					<city lat="38.7077507" lon="-9.1365919">lisbon</city>
+					<city lat="40.7127281" lon="-74.0060152">new-york</city>
 					<listed_in>Crime TV Shows, International TV Shows, TV Action and Adventure</listed_in>
 					<title>Ganglands</title>
 					<rating>TV-MA</rating>
-					<score>8.6</score>
+					<score>3.2</score>
 					<duration>1 Season</duration>
 				</movie>
 			</country>
@@ -2594,21 +2594,21 @@
 			<country country="United Arab Emirates" />
 			<country country="United Kingdom">
 				<movie id="s9">
-					<city lat="38.7077507" lon="-9.1365919">lisbon</city>
+					<city lat="51.5073219" lon="-0.1276474">london</city>
 					<listed_in>British TV Shows, Reality TV</listed_in>
 					<title>The Great British Baking Show</title>
 					<rating>TV-14</rating>
-					<score>5.6</score>
+					<score>5.2</score>
 					<duration>9 Seasons</duration>
 				</movie>
 			</country>
 			<country country="United States">
 				<movie id="s6">
-					<city lat="38.7077507" lon="-9.1365919">lisbon</city>
+					<city lat="40.7127281" lon="-74.0060152">new-york</city>
 					<listed_in>TV Dramas, TV Horror, TV Mysteries</listed_in>
 					<title>Midnight Mass</title>
 					<rating>TV-MA</rating>
-					<score>9.2</score>
+					<score>3.3</score>
 					<duration>1 Season</duration>
 				</movie>
 			</country>
