@@ -2,9 +2,12 @@ import csv
 import random
 import json
 
+from Handlerequest import Handlerequest
+
 
 class Handlecsv:
     def __init__(self) -> None:
+        self.handlerequest = Handlerequest()
         self.cities = []
         self.cities_dict = {}
         self.movie_dict = {}
@@ -35,18 +38,42 @@ class Handlecsv:
         for valor in list(self.cities_dict):
             self.cities.append(valor["cities"])
 
-    def update_raking_value(self) -> float:
+    def random_score_value(self) -> float:
         return round(random.uniform(3, 10), 1)
 
     def update_movies(self) -> None:
 
-        for value in self.movie_dict:
-            value["city"] = self.cities[random.randint(0, 199)]
+        value = list(self.movie_dict)
+
+        for i in range(0, 9):
+            value[i]["city"] = self.cities[random.randint(0, 2)]
+            value[i]["listed_in"] = self.remove_special_characters(
+                value[i]["listed_in"]
+            )
+            value[i]["title"] = self.remove_special_characters(value[i]["title"])
+            value[i]["score"] = self.random_score_value()
+
+            coordinates = self.handlerequest.request_city(value[i]["city"])
+            value[i]["lat"] = coordinates[0]
+            value[i]["lon"] = coordinates[1]
+
+            print(value[i])
+
+            self.movies_updated.append(value[i])
+
+        """ for value in self.movie_dict:
+            value["city"] = self.cities[random.randint(0, 2)]
             value["listed_in"] = self.remove_special_characters(value["listed_in"])
             value["title"] = self.remove_special_characters(value["title"])
             value["rating"] = self.update_raking_value()
 
-            self.movies_updated.append(value)
+            coordinates = self.handlerequest.request_city(value["city"])
+            value["lat"] = coordinates[0]
+            value["lon"] = coordinates[1]
+
+            print(value)
+
+            self.movies_updated.append(value) """
 
     def write_new_csv(self) -> None:
         new_file = open("netflix_updated.csv", "w", newline="")
@@ -72,8 +99,3 @@ class Handlecsv:
 
     def get_movies(self):
         return self.movies_updated
-
-
-handle = Handlecsv()
-
-print(handle.get_movies())

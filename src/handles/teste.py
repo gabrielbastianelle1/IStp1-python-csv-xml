@@ -66,10 +66,14 @@ for filme in filmes:
 
     movie = ET.Element("movie", attrib={"id": f'{filme["show_id"]}'})
 
-    city = ET.SubElement(movie, "city").text = f'{filme["city"]}'
+    city = ET.SubElement(
+        movie, "city", attrib={"lat": f'{filme["lat"]}', "lon": f'{filme["lon"]}'}
+    ).text = f'{filme["city"]}'
+
     listed_in = ET.SubElement(movie, "listed_in").text = f'{filme["listed_in"]}'
     title = ET.SubElement(movie, "title").text = f'{filme["title"]}'
     rating = ET.SubElement(movie, "rating").text = f'{filme["rating"]}'
+    score = ET.SubElement(movie, "score").text = f'{filme["score"]}'
     duration = ET.SubElement(movie, "duration").text = f'{filme["duration"]}'
 
     pais[0].append(movie)
