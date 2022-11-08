@@ -22,7 +22,7 @@ class Handlexml:
         self.create_xml()
 
     def read_csv(self) -> None:
-        self.dataset = pd.read_csv("./csvFiles/netflix1.csv", nrows=10000)
+        self.dataset = pd.read_csv("./csvFiles/netflix1.csv", nrows=10)
 
     def create_types_tag(self) -> None:
         self.series = self.dataset.groupby(["type"])["type"].count()
@@ -86,3 +86,6 @@ class Handlexml:
 
         xml_file = ET.ElementTree(self.movies)
         xml_file.write("movies.xml", encoding="utf-8", xml_declaration=True)
+
+
+handle = Handlexml()
