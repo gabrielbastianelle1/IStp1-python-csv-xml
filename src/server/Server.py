@@ -9,9 +9,12 @@ class Server:
 
     def start_server(self) -> None:
         server = SimpleXMLRPCServer(("localhost", 5000))
+        server.register_function(self.convert_csv_to_xml, "convert_csv_to_xml")
+
         print("server running on port 5000")
 
         server.serve_forever()
 
-
-server = Server()
+    def convert_csv_to_xml(self):
+        handle = Handlexml()
+        return "created!"

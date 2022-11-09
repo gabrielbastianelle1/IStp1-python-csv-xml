@@ -53,9 +53,9 @@ class Handlecsv:
             value[i]["title"] = self.remove_special_characters(value[i]["title"])
             value[i]["score"] = self.random_score_value()
 
-            coordinates = self.handlerequest.request_city(value[i]["city"])
-            value[i]["lat"] = coordinates[0]
-            value[i]["lon"] = coordinates[1]
+            lat, lon = self.handlerequest.request_city(value[i]["city"])
+            value[i]["lat"] = lat
+            value[i]["lon"] = lon
 
             print(value[i])
 
@@ -67,9 +67,9 @@ class Handlecsv:
             value["title"] = self.remove_special_characters(value["title"])
             value["rating"] = self.update_raking_value()
 
-            coordinates = self.handlerequest.request_city(value["city"])
-            value["lat"] = coordinates[0]
-            value["lon"] = coordinates[1]
+            lat, lon = self.handlerequest.request_city(value[i]["city"])
+            value["lat"] = lat
+            value["lon"] = lon
 
             print(value)
 

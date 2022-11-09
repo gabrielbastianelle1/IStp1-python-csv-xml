@@ -86,6 +86,3 @@ class Handlexml:
 
         xml_file = ET.ElementTree(self.movies)
         xml_file.write("movies.xml", encoding="utf-8", xml_declaration=True)
-
-
-handle = Handlexml()

@@ -13,6 +13,7 @@ class Handlerequest:
         )
 
         city = literal_eval(response.read().decode("utf-8"))
-        coordinates = [city[0]["lat"], city[0]["lon"]]
+        lat = city[0]["lat"]
+        lon = city[0]["lon"]
 
-        return coordinates
+        return lat, lon
