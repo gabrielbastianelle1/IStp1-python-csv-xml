@@ -14,7 +14,7 @@ print(len(total)) """
 
 # pandas parte
 # pd.set_option('display.max_rows', None)
-ds = pd.read_csv("./csvFiles/netflix1.csv", nrows=10000)
+ds = pd.read_csv("./csvFiles/netflix1.csv", nrows=10)
 df = ds.groupby(["type"])["type"].count()
 
 # xml part
@@ -43,14 +43,15 @@ for campo in df.keys():
 
 df = ds.groupby(["release_year", "type", "country"])["type"].count()
 
-for campo in df.keys():
-    anos = movies.findall(f'.//release_year[@release_year="{campo[0]}"]')
-    for elem in movies.findall(".//release_year"):
-        for ano in anos:
-            if elem == ano:
-                pais = ET.Element("country", attrib={"country": f"{campo[2]}"})
-                elem.append(pais)
+print(df)
 
+for campo in df.keys():
+    type = movies.findall(f".//type[@type='{campo[1]}']")
+    year = type[0].findall(f".//release_year[@release_year='{campo[0]}']")
+
+    country = ET.Element("country", attrib={"country": f"{campo[2]}"})
+
+    year[0].append(country)
 
 ############################################
 

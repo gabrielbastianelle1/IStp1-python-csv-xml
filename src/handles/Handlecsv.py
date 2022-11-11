@@ -45,7 +45,7 @@ class Handlecsv:
 
         value = list(self.movie_dict)
 
-        for i in range(0, 9):
+        for i in range(0, 10):
             value[i]["city"] = self.cities[random.randint(0, 2)]
             value[i]["listed_in"] = self.remove_special_characters(
                 value[i]["listed_in"]
@@ -57,7 +57,7 @@ class Handlecsv:
             value[i]["lat"] = lat
             value[i]["lon"] = lon
 
-            print(value[i])
+            print(json.dumps(value[i], indent=2))
 
             self.movies_updated.append(value[i])
 

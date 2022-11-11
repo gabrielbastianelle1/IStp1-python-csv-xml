@@ -35,14 +35,10 @@ class Handlexml:
         self.series = self.dataset.groupby(["release_year", "type"])["type"].count()
 
         for campo in self.series.keys():
-            tipos = self.movies.findall(f'.//type[@type="{campo[1]}"]')
-            for elem in self.movies.findall(".//type"):
-                for tipo in tipos:
-                    if elem == tipo:
-                        ano = ET.Element(
-                            "release_year", attrib={"release_year": f"{campo[0]}"}
-                        )
-                        tipo.append(ano)
+            type = self.movies.findall(f".//type[@type='{campo[1]}']")
+            year = ET.Element("release_year", attrib={"release_year": f"{campo[0]}"})
+
+            type[0].append(year)
 
     def create_country_tag(self) -> None:
         self.series = self.dataset.groupby(["release_year", "type", "country"])[
@@ -50,14 +46,14 @@ class Handlexml:
         ].count()
 
         for campo in self.series.keys():
-            anos = self.movies.findall(f'.//release_year[@release_year="{campo[0]}"]')
-            for elem in self.movies.findall(".//release_year"):
-                for ano in anos:
-                    if elem == ano:
-                        pais = ET.Element("country", attrib={"country": f"{campo[2]}"})
-                        elem.append(pais)
+            type = self.movies.findall(f".//type[@type='{campo[1]}']")
+            year = type[0].findall(f".//release_year[@release_year='{campo[0]}']")
+            country = ET.Element("country", attrib={"country": f"{campo[2]}"})
+
+            year[0].append(country)
 
     def create_movie_tag(self) -> None:
+
         for filme in self.filmes:
             tipo = self.movies.findall(f".//type[@type='{filme['type']}']")
             ano = tipo[0].findall(
