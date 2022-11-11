@@ -1,5 +1,4 @@
 import xmlrpc.client
-import asyncio
 
 
 class Client:
