@@ -29,18 +29,13 @@ class Server:
         return files
 
     def insert_xml_file(self, file_name, xml_file, xml_path):
-        
         handlevalidation = Handlevalidation()
-
-        
 
         if handlevalidation.validate(xml_path, "movies.xsd"):
             self.db.insert_xml_to_db(file_name, xml_file)
-            return "XML Inserted"
+            return "xml inserted"
         else:
-            return "XML is not valid"
-
-        
+            return "xml is not valid"
 
     def convert_csv_to_xml(self):
         handle = Handlexml()
