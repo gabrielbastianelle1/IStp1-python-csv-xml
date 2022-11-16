@@ -12,11 +12,16 @@ class Server:
         server = SimpleXMLRPCServer(("localhost", 5000), allow_none=True)
         server.register_function(self.convert_csv_to_xml, "convert_csv_to_xml")
         server.register_function(self.insert_xml_file, "insert_xml_file")
+        server.register_function(self.list_all_xml_file, "list_all_xml_file")
 
         print("server running on port 5000")
 
         self.connect_to_database()
         server.serve_forever()
+
+    def list_all_xml_file(self):
+        files = self.db.list_all_xml_inserted()
+        return files
 
     def insert_xml_file(self, file_name, xml_file):
         self.db.insert_xml_to_db(file_name, xml_file)

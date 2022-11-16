@@ -6,5 +6,5 @@ CREATE TABLE public.imported_documents (
 	xml             XML NOT NULL,
 	created_on      TIMESTAMP NOT NULL DEFAULT NOW(),
 	updated_on      TIMESTAMP NOT NULL DEFAULT NOW(),
-	estado boolean
+	estado boolean DEFAULT TRUE
 );
