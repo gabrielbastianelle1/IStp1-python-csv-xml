@@ -2,6 +2,7 @@ from xmlrpc.server import SimpleXMLRPCServer
 
 from src.handles.Handlexml import Handlexml
 from src.db.Db import Db
+from src.handles.Handlevalidation import Handlevalidation
 
 
 class Server:
@@ -27,8 +28,19 @@ class Server:
         files = self.db.list_all_xml_inserted()
         return files
 
-    def insert_xml_file(self, file_name, xml_file):
-        self.db.insert_xml_to_db(file_name, xml_file)
+    def insert_xml_file(self, file_name, xml_file, xml_path):
+        
+        handlevalidation = Handlevalidation()
+
+        
+
+        if handlevalidation.validate(xml_path, "movies.xsd"):
+            self.db.insert_xml_to_db(file_name, xml_file)
+            return "XML Inserted"
+        else:
+            return "XML is not valid"
+
+        
 
     def convert_csv_to_xml(self):
         handle = Handlexml()

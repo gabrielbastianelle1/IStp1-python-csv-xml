@@ -27,8 +27,11 @@ class Client:
 
         with open(xml_path, "r") as xml_file:
             xml = xml_file.read()
+        
+        response = self.proxy.insert_xml_file(file_name, xml, xml_path)
 
-        self.proxy.insert_xml_file(file_name, xml)
+        print(response)
+        
 
     def convert_csv_to_xml(self):
         print("loading ... ")
