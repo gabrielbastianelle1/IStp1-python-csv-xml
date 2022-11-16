@@ -19,16 +19,15 @@ class Db:
             print("database connected!")
 
             self.cursor = self.connection.cursor()
-            """ self.cursor.execute("SELECT * FROM person")
-
-            print("Person list:")
-            for person in self.cursor:
-                print(person) """
 
         except (Exception, psycopg2.Error) as error:
             print("Failed to fetch data", error)
 
-        finally:
-            if self.connection:
-                self.cursor.close()
-                self.connection.close()
+    def insert_xml_to_db(self, file_name, xml_file):
+        insert_statement = f"INSERT INTO imported_documents (file_name,xml) VALUES ('{file_name}', XMLPARSE (DOCUMENT %s));"
+        self.cursor.execute(insert_statement, [xml_file])
+        self.connection.commit()
+
+    def close_connection(self):
+        self.cursor.close()
+        self.connection.close()
