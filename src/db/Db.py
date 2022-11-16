@@ -24,6 +24,13 @@ class Db:
         except (Exception, psycopg2.Error) as error:
             print("Failed to fetch data", error)
 
+    def delete_xml_file(self, id):
+        self.cursor.execute(
+            f"update imported_documents set estado = false where id = {id}"
+        )
+        self.connection.commit()
+        print("deleted")
+
     def list_all_xml_inserted(self):
         self.cursor.execute("select * from imported_documents;")
         files = []

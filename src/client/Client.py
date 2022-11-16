@@ -9,7 +9,11 @@ class Client:
         self.proxy = xmlrpc.client.ServerProxy("http://localhost:5000/")
 
     def delete_xml_file(self):
-        pass
+        self.list_all_xml_file()
+
+        id = input("insert id to delete: ")
+
+        self.proxy.delete_xml_file(id)
 
     def list_all_xml_file(self):
         files = self.proxy.list_all_xml_file()
@@ -18,8 +22,8 @@ class Client:
             print(f"{file[0]} : {file[1]}")
 
     def insert_xml_file(self):
-        file_name = input("Type the file name: ")
-        xml_path = input("Type the path of xml file (exemple: ./teste.xml): ")
+        file_name = input("type the file name: ")
+        xml_path = input("type the path of xml file (exemple: ./teste.xml): ")
 
         with open(xml_path, "r") as xml_file:
             xml = xml_file.read()
@@ -35,7 +39,6 @@ class Client:
         opcao: str = "a"
 
         while opcao != "s":
-            print("\na - create xml file")
             print("b - insert xml file")
             print("c - list all xml file")
             print("d - delete xml file")
