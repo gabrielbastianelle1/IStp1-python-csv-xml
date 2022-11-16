@@ -12,9 +12,10 @@ class Client:
         file_name = input("Type the file name: ")
         xml_path = input("Type the path of xml file (exemple: ./teste.xml): ")
 
-        with open(xml_path) as xml_file:
+        with open(xml_path, "r") as xml_file:
             xml = xml_file.read()
-            self.proxy.insert_xml_file(file_name, xml)
+
+        self.proxy.insert_xml_file(file_name, xml)
 
     def convert_csv_to_xml(self):
         print("loading ... ")

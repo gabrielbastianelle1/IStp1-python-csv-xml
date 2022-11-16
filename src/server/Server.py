@@ -9,7 +9,7 @@ class Server:
         self.start_server()
 
     def start_server(self) -> None:
-        server = SimpleXMLRPCServer(("localhost", 5000))
+        server = SimpleXMLRPCServer(("localhost", 5000), allow_none=True)
         server.register_function(self.convert_csv_to_xml, "convert_csv_to_xml")
         server.register_function(self.insert_xml_file, "insert_xml_file")
 
@@ -28,3 +28,4 @@ class Server:
     def connect_to_database(self):
         self.db = Db()
         self.db.connection_db()
+        self.db.create_table_and_insert_initial_xml()

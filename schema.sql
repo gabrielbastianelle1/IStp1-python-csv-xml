@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS imported_documents;
+
 CREATE TABLE public.imported_documents (
 	id              serial PRIMARY KEY,
 	file_name       VARCHAR(250) UNIQUE NOT NULL,
