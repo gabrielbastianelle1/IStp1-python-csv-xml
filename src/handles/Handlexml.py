@@ -37,7 +37,6 @@ class Handlexml:
         for campo in self.series.keys():
             type = self.movies.findall(f".//type[@type='{campo[1]}']")
             year = ET.Element("release_year", attrib={"release_year": f"{campo[0]}"})
-
             type[0].append(year)
 
     def create_country_tag(self) -> None:
@@ -46,36 +45,32 @@ class Handlexml:
         ].count()
 
         for campo in self.series.keys():
-            type = self.movies.findall(f".//type[@type='{campo[1]}']")
-            year = type[0].findall(f".//release_year[@release_year='{campo[0]}']")
+            parent = self.movies.findall(
+                f".//type[@type='{campo[1]}']/release_year[@release_year='{campo[0]}']"
+            )
             country = ET.Element("country", attrib={"country": f"{campo[2]}"})
-
-            year[0].append(country)
+            parent[0].append(country)
 
     def create_movie_tag(self) -> None:
 
         for filme in self.filmes:
-            tipo = self.movies.findall(f".//type[@type='{filme['type']}']")
-            ano = tipo[0].findall(
-                f".//release_year[@release_year='{filme['release_year']}']"
+
+            parent = self.movies.findall(
+                f".//type[@type='{filme['type']}']/release_year[@release_year='{filme['release_year']}']/country[@country='{filme['country']}']"
             )
-            pais = ano[0].findall(f".//country[@country='{filme['country']}']")
-
             movie = ET.Element("movie", attrib={"id": f'{filme["show_id"]}'})
-
             ET.SubElement(
                 movie,
                 "city",
                 attrib={"lat": f'{filme["lat"]}', "lon": f'{filme["lon"]}'},
             ).text = f'{filme["city"]}'
-
             ET.SubElement(movie, "listed_in").text = f'{filme["listed_in"]}'
             ET.SubElement(movie, "title").text = f'{filme["title"]}'
             ET.SubElement(movie, "rating").text = f'{filme["rating"]}'
             ET.SubElement(movie, "score").text = f'{filme["score"]}'
             ET.SubElement(movie, "duration").text = f'{filme["duration"]}'
 
-            pais[0].append(movie)
+            parent[0].append(movie)
 
     def create_xml(self) -> None:
         ET.indent(tree=self.movies, space="\t", level=0)
