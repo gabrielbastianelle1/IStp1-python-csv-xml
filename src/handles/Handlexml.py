@@ -67,6 +67,7 @@ class Handlexml:
             ET.SubElement(movie, "rating").text = f'{filme["rating"]}'
             ET.SubElement(movie, "score").text = f'{filme["score"]}'
             ET.SubElement(movie, "duration").text = f'{filme["duration"]}'
+            ET.SubElement(movie, "director").text = f'{filme["director"]}'
 
             parent[0].append(movie)
 
