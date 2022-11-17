@@ -15,20 +15,24 @@ class Server:
         server.register_function(self.insert_xml_file, "insert_xml_file")
         server.register_function(self.list_all_xml_file, "list_all_xml_file")
         server.register_function(self.delete_xml_file, "delete_xml_file")
+        server.register_function(self.teste, "teste")
 
         print("server running on port 5000")
 
         self.connect_to_database()
         server.serve_forever()
 
-    def delete_xml_file(self, id):
+    def teste(self):
+        return self.db.teste()
+
+    def delete_xml_file(self, id) -> None:
         self.db.delete_xml_file(id)
 
-    def list_all_xml_file(self):
+    def list_all_xml_file(self) -> list:
         files = self.db.list_all_xml_inserted()
         return files
 
-    def insert_xml_file(self, file_name, xml_file, xml_path):
+    def insert_xml_file(self, file_name, xml_file, xml_path) -> str:
         handlevalidation = Handlevalidation()
 
         if handlevalidation.validate(xml_path, "movies.xsd"):
@@ -37,11 +41,11 @@ class Server:
         else:
             return "xml is not valid"
 
-    def convert_csv_to_xml(self):
+    def convert_csv_to_xml(self) -> str:
         handle = Handlexml()
         return "created!"
 
-    def connect_to_database(self):
+    def connect_to_database(self) -> None:
         self.db = Db()
         self.db.connection_db()
         self.db.create_table_and_insert_initial_xml()

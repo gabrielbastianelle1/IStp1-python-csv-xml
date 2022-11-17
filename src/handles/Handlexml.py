@@ -52,9 +52,7 @@ class Handlexml:
             parent[0].append(country)
 
     def create_movie_tag(self) -> None:
-
         for filme in self.filmes:
-
             parent = self.movies.findall(
                 f".//type[@type='{filme['type']}']/release_year[@release_year='{filme['release_year']}']/country[@country='{filme['country']}']"
             )
