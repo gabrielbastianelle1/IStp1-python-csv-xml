@@ -15,7 +15,13 @@ class Client:
         for query in queries:
             if query["query_id"] == query_id:
                 response = self.proxy.query(query["function"](xml_id))
-                print(response)
+
+                response.insert(0, query["head"])
+
+                for value in response:
+                    print(value)
+
+        print("\n")
 
     def delete_xml_file(self) -> None:
         self.list_all_xml_file()
@@ -53,7 +59,8 @@ class Client:
         opcao: str = "a"
 
         while opcao != "s":
-            print("a - query teste")
+            print("a - order country per amount of movies")
+            print("b - order movie per score")
             print("s - back")
             opcao = input("choose an option: ")
             self.clean_bash()
@@ -61,6 +68,8 @@ class Client:
             match opcao:
                 case "a":
                     self.query(1, 1)
+                case "b":
+                    self.query(1, 2)
 
     def menu(self) -> None:
         opcao: str = "a"
