@@ -1,8 +1,11 @@
 select * from imported_documents;
 
-select unnest(xpath('.//type/release_year/country/@country', xml))::text as countries, count(*)
+select unnest(xpath('.//type/release_year/country/@country', xml))::text as countries, count(*) as total_movies
 from imported_documents
-group by countries;
+where id = 1
+group by countries
+order by total_movies desc;
+
 
 select unnest(xpath('.//type/release_year/country/movie/title/text()', xml))::text as title,
 unnest(xpath('.//type/release_year/country/movie/score/text()', xml))::text::float as score

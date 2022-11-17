@@ -15,15 +15,15 @@ class Server:
         server.register_function(self.insert_xml_file, "insert_xml_file")
         server.register_function(self.list_all_xml_file, "list_all_xml_file")
         server.register_function(self.delete_xml_file, "delete_xml_file")
-        server.register_function(self.teste, "teste")
+        server.register_function(self.query, "query")
 
         print("server running on port 5000")
 
         self.connect_to_database()
         server.serve_forever()
 
-    def teste(self):
-        return self.db.teste()
+    def query(self, query):
+        return self.db.query(query)
 
     def delete_xml_file(self, id) -> None:
         self.db.delete_xml_file(id)

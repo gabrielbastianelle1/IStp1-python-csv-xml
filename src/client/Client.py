@@ -1,6 +1,8 @@
 import xmlrpc.client
 import os
 
+from queries import queries
+
 
 class Client:
     def __init__(self) -> None:
@@ -9,11 +11,11 @@ class Client:
     def start_client(self) -> None:
         self.proxy = xmlrpc.client.ServerProxy("http://localhost:5000/")
 
-    def teste(self):
-        response = self.proxy.teste()
-
-        for value in response:
-            print(value)
+    def query(self, xml_id, query_id):
+        for query in queries:
+            if query["query_id"] == query_id:
+                response = self.proxy.query(query["function"](xml_id))
+                print(response)
 
     def delete_xml_file(self) -> None:
         self.list_all_xml_file()
@@ -51,14 +53,14 @@ class Client:
         opcao: str = "a"
 
         while opcao != "s":
-            print("\na - teste")
+            print("a - query teste")
             print("s - back")
             opcao = input("choose an option: ")
             self.clean_bash()
 
             match opcao:
                 case "a":
-                    self.teste()
+                    self.query(1, 1)
 
     def menu(self) -> None:
         opcao: str = "a"
