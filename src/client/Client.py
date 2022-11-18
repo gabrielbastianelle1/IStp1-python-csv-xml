@@ -53,7 +53,7 @@ class Client:
         print(response)
 
     def clean_bash(self) -> None:
-        os.system("clear")
+        os.system("cls")
 
     def menu_queries(self) -> None:
         opcao: str = "a"

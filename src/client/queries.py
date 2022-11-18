@@ -8,7 +8,7 @@ def order_total_movies_per_country(xml_id):
     print("a - asc order")
     print("b - desc order")
     opcao = input("choose an option: ")
-    os.system("clear")
+    os.system("cls")
 
     match opcao:
         case "a":
@@ -26,7 +26,7 @@ def order_movie_per_score(xml_id):
     print("a - asc order")
     print("b - desc order")
     opcao = input("choose an option: ")
-    os.system("clear")
+    os.system("cls")
 
     match opcao:
         case "a":
