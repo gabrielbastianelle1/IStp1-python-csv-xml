@@ -61,6 +61,7 @@ class Client:
         while opcao != "s":
             print("a - order country per amount of movies")
             print("b - order movie per score")
+            print("c - Count movies pr rating")
             print("s - back")
             opcao = input("choose an option: ")
             self.clean_bash()
@@ -70,6 +71,8 @@ class Client:
                     self.query(1, 1)
                 case "b":
                     self.query(1, 2)
+                case "c":
+                    self.query(1, 3)
 
     def menu(self) -> None:
         opcao: str = "a"

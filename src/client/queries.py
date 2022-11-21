@@ -37,6 +37,15 @@ def order_movie_per_score(xml_id):
     return f"select unnest(xpath('(.//type/release_year/country/movie[number(score)>number({mininum})])/title/text()', xml))::text as title,unnest(xpath('(.//type/release_year/country/movie[number(score)>number({mininum})])/score/text()', xml))::text::float as score from imported_documents where id = {xml_id} order by score {order};"
 
 
+def count_movies_per_rating(xml_id):
+
+    year = input("insert year: ")
+
+    return f"select unnest(xpath('(.//type/release_year[@release_year=number({year})]/country/movie)/rating/text()', xml))::text as rating, count(*) as totalMovies from imported_documents where id = {xml_id} group by rating order by totalmovies desc;"
+
+
+
+
 queries = [
     {
         "query_id": 1,
@@ -47,5 +56,10 @@ queries = [
         "query_id": 2,
         "function": order_movie_per_score,
         "head": ["title", "score"],
+    },
+    {
+        "query_id": 3,
+        "function": count_movies_per_rating,
+        "head": ["rating", "total movies"],
     },
 ]
