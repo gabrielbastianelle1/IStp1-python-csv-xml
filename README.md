@@ -31,8 +31,8 @@ To run the application you should be on root directory and then:
 python3 main.py
 ```
 
-To run the client to test you should be on Client directory and then:
+To run the client to test you should be on /src/client directory and then:
 
 ```bash
-python3 Client.pt
+python3 Client.py
 ```
