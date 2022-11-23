@@ -9,6 +9,8 @@ class Handlecsv:
     def __init__(self, total_lines) -> None:
         self.total_lines=total_lines
 
+        self.total_cities = 25
+
         self.handlerequest = Handlerequest()
         self.cities = []
         self.cities_dict = {}
@@ -19,6 +21,8 @@ class Handlecsv:
         self.convert_cities_to_array()
         self.update_movies()
 
+        
+
     def read_csv_movies(self) -> None:
         csv_file = open("./csvFiles/netflix1.csv", newline="")
         self.movie_dict = csv.DictReader(csv_file)
@@ -26,7 +30,7 @@ class Handlecsv:
     def read_csv_cities(self) -> None:
         csv_file = open("./csvFiles/cities.csv", newline="")
         self.cities_dict = csv.DictReader(csv_file)
-        self.total_cities = 100
+        
 
     def remove_special_characters(self, value: str) -> str:
         special_characters = ["@", "#", "$", "*", "&"]
@@ -44,12 +48,15 @@ class Handlecsv:
     def add_random_score_value(self) -> float:
         return round(random.uniform(3, 10), 1)
 
+    def get_random_city(self) -> str:
+        return self.cities[random.randint(0, self.total_cities)]
+
     def update_movies(self) -> None:
 
         all_lines = list(self.movie_dict)
 
         for i in range(0, self.total_lines):
-            all_lines[i]["city"] = self.cities[random.randint(0, self.total_cities)]
+            all_lines[i]["city"] = self.get_random_city()
             all_lines[i]["listed_in"] = self.remove_special_characters(
                 all_lines[i]["listed_in"]
             )

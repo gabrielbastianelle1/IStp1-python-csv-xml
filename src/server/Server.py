@@ -48,6 +48,8 @@ class Server:
 
     def convert_csv_to_xml(self, total_lines) -> str:
         Handlexml(total_lines)
+        self.db.create_table_and_insert_initial_xml()
+
         return "created!"
 
     def connect_to_database(self) -> None:

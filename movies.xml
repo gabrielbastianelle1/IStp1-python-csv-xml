@@ -4,11 +4,11 @@
 		<release_year release_year="2020">
 			<country country="United States">
 				<movie id="s1">
-					<city lat="51.5073219" lon="-0.1276474">london</city>
+					<city lat="40.4167047" lon="-3.7035825">madrid</city>
 					<listed_in>Documentaries</listed_in>
 					<title>Dick Johnson Is Dead</title>
 					<rating>PG-13</rating>
-					<score>7.5</score>
+					<score>7.4</score>
 					<duration>90 min</duration>
 					<director>Kirsten Johnson</director>
 				</movie>

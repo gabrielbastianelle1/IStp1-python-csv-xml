@@ -48,6 +48,7 @@ class Db:
         self.connection.commit()
 
     def create_table_and_insert_initial_xml(self) -> None:
+        
         self.cursor.execute(open("schema.sql", "r").read())
 
         with open("movies.xml") as xml_file:
