@@ -26,6 +26,7 @@ class Handlecsv:
     def read_csv_cities(self) -> None:
         csv_file = open("./csvFiles/cities.csv", newline="")
         self.cities_dict = csv.DictReader(csv_file)
+        self.total_cities = 100
 
     def remove_special_characters(self, value: str) -> str:
         special_characters = ["@", "#", "$", "*", "&"]
@@ -40,7 +41,7 @@ class Handlecsv:
         for valor in list(self.cities_dict):
             self.cities.append(valor["cities"])
 
-    def random_score_value(self) -> float:
+    def add_random_score_value(self) -> float:
         return round(random.uniform(3, 10), 1)
 
     def update_movies(self) -> None:
@@ -48,12 +49,12 @@ class Handlecsv:
         all_lines = list(self.movie_dict)
 
         for i in range(0, self.total_lines):
-            all_lines[i]["city"] = self.cities[random.randint(0, 2)]
+            all_lines[i]["city"] = self.cities[random.randint(0, self.total_cities)]
             all_lines[i]["listed_in"] = self.remove_special_characters(
                 all_lines[i]["listed_in"]
             )
             all_lines[i]["title"] = self.remove_special_characters(all_lines[i]["title"])
-            all_lines[i]["score"] = self.random_score_value()
+            all_lines[i]["score"] = self.add_random_score_value()
 
             lat, lon = self.handlerequest.request_city(all_lines[i]["city"])
             all_lines[i]["lat"] = lat
