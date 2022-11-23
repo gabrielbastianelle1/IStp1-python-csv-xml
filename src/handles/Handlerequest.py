@@ -1,7 +1,5 @@
 import urllib.request
 from ast import literal_eval
-import json
-
 
 class Handlerequest:
     def __init__(self) -> None:

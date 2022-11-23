@@ -63,20 +63,6 @@ class Handlecsv:
 
             self.movies_updated.append(all_lines[i])
 
-        """ for value in self.movie_dict:
-            value["city"] = self.cities[random.randint(0, 2)]
-            value["listed_in"] = self.remove_special_characters(value["listed_in"])
-            value["title"] = self.remove_special_characters(value["title"])
-            value["rating"] = self.update_raking_value()
-
-            lat, lon = self.handlerequest.request_city(value[i]["city"])
-            value["lat"] = lat
-            value["lon"] = lon
-
-            print(value)
-
-            self.movies_updated.append(value) """
-
     def write_new_csv(self) -> None:
         new_file = open("netflix_updated.csv", "w", newline="")
         fields = [

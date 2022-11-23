@@ -1,6 +1,4 @@
 import psycopg2
-import os
-
 
 class Db:
     def __init__(self) -> None:
