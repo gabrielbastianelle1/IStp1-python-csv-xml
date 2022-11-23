@@ -1,8 +1,6 @@
-# Systems Integration Development Kit #
-
 ### Introduction ###
 
-This environment allows you to easily install the development environment and its dependencies.
+Project made by Gabriel Bastianelle, Diogo Rosas and Vasco Cardoso.
 This is to be used for the 1st project in Systems Integration course from Informatics Engineering at IPVC/ESTG.
 
 ### How to I setup my development environment? ###
@@ -25,31 +23,16 @@ docker-compose stop
 docker-compose start
 ```
 
-### Available Resources ###
+## Getting Started
 
-#### PostgreSQL Database ####
+To run the application you should be on root directory and then:
 
-* Available at localhost:5432
-  * **username**: is
-  * **password**: is
-  * **database**: is
+```bash
+python3 main.py
+```
 
-#### Python Dev Environment ####
+To run the client to test you should be on Client directory and then:
 
-* Python 3.9.15
-* You can add pre-installed packages to the **_requirements.txt_** file. Remember that if you add any dependency, you will have to build the Docker images again.
-* You can easily use this python environment by opening up a terminal with the following command.
+```bash
+python3 Client.pt
 ```
-docker-compose run dev /bin/bash
-```
-* You can also run directly a Python script as follows. 
-```
-docker-compose run --rm dev python db-access/main.py
-```
-* Every time you use the command **_docker-compose run_**, a new unnamed container will be created. The **_--rm flag_** will automatically remove the created container once the run is over.
-* For the XMLRPC server, you can run it in watch mode. This means that any time you edit the source code, the server will be automatically reloaded.
-```
-docker-compose run --rm dev pymon rpc-server/main.py
-```
-___
-#### _Informatics Engineering @ipvc/estg, 2022-2023_ ####
