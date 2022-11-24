@@ -38,6 +38,8 @@ class Db:
         self.cursor.execute("select * from imported_documents;")
         files = []
         for file in self.cursor:
+            
+            #file[5] significa o quinto campo da table, que é um boolean se foi deletado ou nao
             if file[5] == True:
                 files.append(file)
         return files

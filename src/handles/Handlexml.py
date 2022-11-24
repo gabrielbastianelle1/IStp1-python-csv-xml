@@ -3,7 +3,6 @@ import xml.etree.ElementTree as ET
 
 from .Handlecsv import Handlecsv
 
-
 class Handlexml:
     def __init__(self, total_lines) -> None:
         self.total_lines = total_lines
